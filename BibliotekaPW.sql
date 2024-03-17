@@ -141,4 +141,3 @@ CREATE TABLE Config (
     DataModyfikacji date NOT NULL,
     DataDodania date NOT NULL
 );
-
