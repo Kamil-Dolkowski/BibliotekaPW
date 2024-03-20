@@ -1,4 +1,12 @@
+CREATE DATABASE LibraryPW;
+GO
+
 USE LibraryPW;
+GO
+
+CREATE TYPE phone_number FROM varchar(9);
+CREATE TYPE post_code FROM varchar(6);
+GO
 
 CREATE TABLE author (
     author_ID int PRIMARY KEY IDENTITY(1,1),
@@ -32,7 +40,7 @@ CREATE TABLE localization (
     city varchar(30) NOT NULL,
     street varchar(30) NOT NULL,
     number int NOT NULL,
-    post_code varchar(6) NOT NULL,
+    post_code post_code NOT NULL,
     voivodeship varchar(19) NOT NULL,
 );
 
@@ -43,7 +51,7 @@ CREATE TABLE book (
     genre_ID int,
     description varchar(300),
     review_ID int,
-    publication_date int,
+    publication_year int,
     publisher_ID int,
     status varchar(15) NOT NULL,
     FOREIGN KEY (author_ID) REFERENCES author(author_ID),
@@ -88,7 +96,7 @@ CREATE TABLE account (
     type varchar(20) NOT NULL,
     index_PW varchar(6),
     rentals int,
-    phone_number varchar(9) NOT NULL,
+    phone_number phone_number NOT NULL,
     email varchar(40) NOT NULL,
 );
 
