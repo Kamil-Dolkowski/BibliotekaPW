@@ -1,143 +1,143 @@
-USE BibliotekaPW;
+USE LibraryPW;
 
-CREATE TABLE Autor (
-	AutorID int PRIMARY KEY IDENTITY(1,1),
-	Imie varchar(15) NOT NULL,
-	Nazwisko varchar(30) NOT NULL,
-	Pseudonim varchar(30)
+CREATE TABLE Author (
+	AuthorID int PRIMARY KEY IDENTITY(1,1),
+	Name varchar(15) NOT NULL,
+	Surname varchar(30) NOT NULL,
+	Pseudonym varchar(30)
 );
 
-CREATE TABLE Wydawnictwo (
-	WydawnictwoID int PRIMARY KEY IDENTITY(1,1),
-	Nazwa varchar(30) NOT NULL,
+CREATE TABLE Publisher (
+	PublisherID int PRIMARY KEY IDENTITY(1,1),
+	Name varchar(30) NOT NULL,
 	Status varchar(30) NOT NULL
 );
 
-CREATE TABLE Recenzja (
-	RecenzjaID int PRIMARY KEY IDENTITY(1,1),
-	Ocena int NOT NULL,
-    Tresc varchar(300),
+CREATE TABLE Review (
+	ReviewID int PRIMARY KEY IDENTITY(1,1),
+	Rating int NOT NULL,
+    Content varchar(300),
     Username varchar(30) NOT NULL,
-    Ukryj bit,
+    Hide bit,
 );
 
-CREATE TABLE Gatunek (
-	GatunekID int PRIMARY KEY IDENTITY(1,1),
-	Nazwa varchar(20) NOT NULL,
-    Ukryj bit
+CREATE TABLE Genre (
+	GenreID int PRIMARY KEY IDENTITY(1,1),
+	Name varchar(20) NOT NULL,
+    Hide bit
 );
 
-CREATE TABLE Lokalizacja (
-	LokalizacjaID int PRIMARY KEY IDENTITY(1,1),
-	Miasto varchar(30) NOT NULL,
-    Ulica varchar(30) NOT NULL,
-    Numer int NOT NULL,
-    KodPocztowy varchar(6) NOT NULL,
-    Wojewodztwo varchar(19) NOT NULL,
+CREATE TABLE Localization (
+	LocalizationID int PRIMARY KEY IDENTITY(1,1),
+	City varchar(30) NOT NULL,
+    Street varchar(30) NOT NULL,
+    Number int NOT NULL,
+    PostCode varchar(6) NOT NULL,
+    Voivodeship varchar(19) NOT NULL,
 );
 
-CREATE TABLE Ksiazka (
+CREATE TABLE Book (
     BookID int PRIMARY KEY IDENTITY(1,1),
-    AutorID int NOT NULL,
-    Tytul varchar(50) NOT NULL,
-    GatunekID int,
-    Opis varchar(300),
-    RecenzjaID int,
-    RokWydania int,
-    WydawnictwoID int,
+    AuthorID int NOT NULL,
+    Title varchar(50) NOT NULL,
+    GenreID int,
+    Description varchar(300),
+    ReviewID int,
+    PublicationDate int,
+    PublisherID int,
     Status varchar(15) NOT NULL,
-	FOREIGN KEY (AutorID) REFERENCES Autor(AutorID),
-    FOREIGN KEY (GatunekID) REFERENCES Gatunek(GatunekID),
-    FOREIGN KEY (RecenzjaID) REFERENCES Recenzja(RecenzjaID),
-    FOREIGN KEY (WydawnictwoID) REFERENCES Wydawnictwo(WydawnictwoID)
+	FOREIGN KEY (AuthorID) REFERENCES Author(AuthorID),
+    FOREIGN KEY (GenreID) REFERENCES Genre(GenreID),
+    FOREIGN KEY (ReviewID) REFERENCES Review(ReviewID),
+    FOREIGN KEY (PublisherID) REFERENCES Publisher(PublisherID)
 );
 
-CREATE TABLE GodzinyOtwarcia (
-	GodzinyOtwarciaID int PRIMARY KEY IDENTITY(1,1),
-	DzienTygodnia varchar(12) NOT NULL,
-    Godziny varchar(11) NOT NULL,
+CREATE TABLE OpeningHours (
+	OpeningHoursID int PRIMARY KEY IDENTITY(1,1),
+	WeekDay varchar(12) NOT NULL,
+    Hours varchar(11) NOT NULL,
     Status varchar(9) NOT NULL
 );
 
-CREATE TABLE Biblioteka (
-	BibliotekaID int PRIMARY KEY IDENTITY(1,1),
-	Nazwa varchar(40) NOT NULL,
-    LokalizacjaID int,
-    GodzinyOtwarciaID int,
-    FOREIGN KEY (LokalizacjaID) REFERENCES Lokalizacja(LokalizacjaID),
-    FOREIGN KEY (GodzinyOtwarciaID) REFERENCES GodzinyOtwarcia(GodzinyOtwarciaID)
+CREATE TABLE Library (
+	LibraryID int PRIMARY KEY IDENTITY(1,1),
+	Name varchar(40) NOT NULL,
+    LocalizationID int,
+    OpeningHoursID int,
+    FOREIGN KEY (LocalizationID) REFERENCES Localization(LocalizationID),
+    FOREIGN KEY (OpeningHoursID) REFERENCES OpeningHours(OpeningHoursID)
 );
 
-CREATE TABLE Egzemplarz (
-	EgzemplarzID int PRIMARY KEY IDENTITY(1,1),
+CREATE TABLE Piece (
+	PieceID int PRIMARY KEY IDENTITY(1,1),
 	BookID int NOT NULL,
     Status varchar(20) NOT NULL,
-    BibliotekaID int NOT NULL,
-    Zuzycie int,
-    FOREIGN KEY (BookID) REFERENCES Ksiazka(BookID),
-    FOREIGN KEY (BibliotekaID) REFERENCES Biblioteka(BibliotekaID)
+    LibraryID int NOT NULL,
+    Wear int,
+    FOREIGN KEY (BookID) REFERENCES Book(BookID),
+    FOREIGN KEY (LibraryID) REFERENCES Library(LibraryID)
 );
 
-CREATE TABLE Uzytkownik (
-	UzytkownikID int PRIMARY KEY IDENTITY(1,1),
-	Imie varchar(15) NOT NULL,
-    Nazwisko varchar(30) NOT NULL,
+CREATE TABLE Account (
+	AccountID int PRIMARY KEY IDENTITY(1,1),
+	Name varchar(15) NOT NULL,
+    Surname varchar(30) NOT NULL,
     Status varchar(10) NOT NULL,
     Login varchar(20) NOT NULL,
-    Haslo varchar(20) NOT NULL,
-    Typ varchar(20) NOT NULL,
-    IndeksPW varchar(6),
-    Wypozyczenia int,
-    NrTel varchar(9) NOT NULL,
+    Password varchar(20) NOT NULL,
+    Type varchar(20) NOT NULL,
+    IndexPW varchar(6),
+    Rentals int,
+    PhoneNumber varchar(9) NOT NULL,
     Email varchar(40) NOT NULL,
 );
 
-CREATE TABLE Zamowienie (
-	ZamowienieID int PRIMARY KEY IDENTITY(1,1),
-	EgzemplarzID int NOT NULL,
-    UzytkownikID int NOT NULL,
-    Data date NOT NULL,
-    CzasOdbioru time NOT NULL,
-    FOREIGN KEY (EgzemplarzID) REFERENCES Egzemplarz(EgzemplarzID),
-    FOREIGN KEY (UzytkownikID) REFERENCES Uzytkownik(UzytkownikID)
+CREATE TABLE BookOrder (
+	OrderID int PRIMARY KEY IDENTITY(1,1),
+	PieceID int NOT NULL,
+    AccountID int NOT NULL,
+    Date date NOT NULL,
+    PickupTime time NOT NULL,
+    FOREIGN KEY (PieceID) REFERENCES Piece(PieceID),
+    FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
 );
 
-CREATE TABLE Wypozyczenie (
-	WypozyczenieID int PRIMARY KEY IDENTITY(1,1),
-	ZamowienieID int NOT NULL,
-    EgzemplarzID int NOT NULL,
-    DataWypozyczenia date NOT NULL,
-    CzasWypozyczenia time NOT NULL,
-    DataZwrotu date NOT NULL,
-    FOREIGN KEY (ZamowienieID) REFERENCES Zamowienie(ZamowienieID),
-    FOREIGN KEY (EgzemplarzID) REFERENCES Egzemplarz(EgzemplarzID)
+CREATE TABLE Rental (
+	RentalID int PRIMARY KEY IDENTITY(1,1),
+	OrderID int NOT NULL,
+    PieceID int NOT NULL,
+    RentalDate date NOT NULL,
+    RentalTime time NOT NULL,
+    ReturnDate date NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES BookOrder(OrderID),
+    FOREIGN KEY (PieceID) REFERENCES Piece(PieceID)
 );
 
-CREATE TABLE Przedluzenie (
-	PrzedluzenieID int PRIMARY KEY IDENTITY(1,1),
-	WypozyczenieID int,
-    Typ varchar(15),
-    Czas time,
-    FOREIGN KEY (WypozyczenieID) REFERENCES Wypozyczenie(WypozyczenieID)
+CREATE TABLE Extension (
+	ExtensionID int PRIMARY KEY IDENTITY(1,1),
+	RentalID int,
+    Type varchar(15),
+    Time time,
+    FOREIGN KEY (RentalID) REFERENCES Rental(RentalID)
 );
 
-ALTER TABLE Wypozyczenie ADD PrzedluzenieID int NOT NULL;
-ALTER TABLE Wypozyczenie ADD FOREIGN KEY (PrzedluzenieID) REFERENCES Przedluzenie(PrzedluzenieID)
+ALTER TABLE Rental ADD ExtensionID int NOT NULL;
+ALTER TABLE Rental ADD FOREIGN KEY (ExtensionID) REFERENCES Extension(ExtensionID)
 
-CREATE TABLE Notyfikacja (
-	NotyfikacjaID int PRIMARY KEY IDENTITY(1,1),
-	PrzedluzenieID int NOT NULL,
-    Tresc varchar(200) NOT NULL,
-    Typ varchar(15),
-    UzytkownikID int NOT NULL,
-    FOREIGN KEY (PrzedluzenieID) REFERENCES Przedluzenie(PrzedluzenieID),
-    FOREIGN KEY (UzytkownikID) REFERENCES Uzytkownik(UzytkownikID)
+CREATE TABLE Notification (
+	NotificationID int PRIMARY KEY IDENTITY(1,1),
+	ExtensionID int NOT NULL,
+    Content varchar(200) NOT NULL,
+    Type varchar(15),
+    AccountID int NOT NULL,
+    FOREIGN KEY (ExtensionID) REFERENCES Extension(ExtensionID),
+    FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
 );
 
 CREATE TABLE Config (
 	ConfigID int PRIMARY KEY IDENTITY(1,1),
-	Klucz varchar(30) NOT NULL,
-    Wartosc int NOT NULL,
-    DataModyfikacji date NOT NULL,
-    DataDodania date NOT NULL
+	ConfigKey varchar(30) NOT NULL,
+    Value int NOT NULL,
+    ModificationDate date NOT NULL,
+    AddDate date NOT NULL
 );
