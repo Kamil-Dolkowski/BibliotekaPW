@@ -149,3 +149,7 @@ CREATE TABLE config (
     modification_date date NOT NULL,
     add_date date NOT NULL
 );
+
+CREATE VIEW Books_titles AS
+SELECT title
+FROM book
