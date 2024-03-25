@@ -6,6 +6,7 @@ GO
 
 CREATE TYPE phone_number FROM varchar(9);
 CREATE TYPE post_code FROM varchar(6);
+CREATE TYPE email FROM varchar(256);
 GO
 
 CREATE TABLE author (
@@ -23,7 +24,7 @@ CREATE TABLE publisher (
 
 CREATE TABLE review (
     review_ID int PRIMARY KEY IDENTITY(1,1),
-    rating int NOT NULL,
+    rating int NOT NULL CHECK (rating BETWEEN 1 AND 5),
     content varchar(300),
     username varchar(30) NOT NULL,
     hide bit,
@@ -38,8 +39,7 @@ CREATE TABLE genre (
 CREATE TABLE localization (
     localization_ID int PRIMARY KEY IDENTITY(1,1),
     city varchar(30) NOT NULL,
-    street varchar(30) NOT NULL,
-    number int NOT NULL,
+    street varchar(40) NOT NULL,  -- nazwa ulicy i numer budynku
     post_code post_code NOT NULL,
     voivodeship varchar(19) NOT NULL,
 );
@@ -92,12 +92,12 @@ CREATE TABLE account (
     surname varchar(30) NOT NULL,
     status varchar(10) NOT NULL,
     login varchar(20) NOT NULL,
-    password varchar(20) NOT NULL,
+    password varchar(256) NOT NULL,      
     type varchar(20) NOT NULL,
     index_PW varchar(6),
     rentals int,
     phone_number phone_number NOT NULL,
-    email varchar(40) NOT NULL,
+    email email NOT NULL,
 );
 
 CREATE TABLE book_order (
@@ -153,3 +153,9 @@ CREATE TABLE config (
 CREATE VIEW Books_titles AS
 SELECT title
 FROM book
+
+
+
+
+-- status do oddzielnej tabeli
+-- nowe widoki
