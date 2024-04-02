@@ -45,3 +45,18 @@ VALUES
 (48, 46, 'Czasy pierwszych chrześcijan, miłość, cierpienie, przemiana bohatera.', 'Quo vadis', 2019, 43, 45, 21),
 (49, 47, 'Epopeja narodowa, patriotyzm, przemiana bohatera.', 'Pan Taduesz', 2010, 44, 46, 13),
 (50, 47, 'Cykl dramatów romantycznych Adama Mickiewicza publikowany w latach 1823–1860.', 'Dziady', 1999, 44, 43, 14);
+
+
+
+INSERT INTO Users(user_id, name, email, phone_number, status_id, indeks)
+VALUES 
+(41, 'Adam Miodek', 'adam.miodek@pw.edu.pl', '567845346', 1, 123345),
+(42, 'Małgorzata Kowalska', 'malgorzata.kowalska@pw.edu.pl', '783458809', 1, 546898),
+(43, 'Paweł Lipski', 'pawel.lipski@pw.edu.pl', '733456210', 1, 567342),
+(44, 'Anna Mrozek', 'anna.mrozek@pw.edu.pl', '709947662', 1, 578009),
+(45, 'Katarzyna Góralska', 'katarzyna.goralska@pw.edu.pl', '598099332', 1, 345098),
+(46, 'Mateusz Orłowski', 'mateusz.orlowski@pw.edu.pl', '809356761', 1, 389066),
+(47, 'Oliwia Sosnowska', 'oliwia.sosnowska@pw.edu.pl', '789212343', 1, 356778),
+(48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 1, 333526),
+(49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 1, 387990),
+(50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 1, 234112);
