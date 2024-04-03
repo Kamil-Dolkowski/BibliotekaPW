@@ -62,7 +62,7 @@ VALUES
 (48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 8, 333526),
 (49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 8, 387990),
 (50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 9, 234112);
-SET IDENTITY_INSERT  Users ON
+SET IDENTITY_INSERT  Users OFF
 
 SET IDENTITY_INSERT  Locations ON
 INSERT INTO Locations(location_id, city, street, number, post_code)
@@ -127,3 +127,16 @@ VALUES
 (44, 'Kamil', 'Wiśniewski', '675678879', 3600, 8, 1, '387990', 'Bi8li0t3k@', 44),
 (45, 'Karol', 'Gawron', '556342132', 3400, 8, 2, '889990', 'Lubi3-Ksi@zkiI', 41);
 SET IDENTITY_INSERT  Employees OFF
+
+
+SET IDENTITY_INSERT  Orders ON
+INSERT INTO Orders(order_id, elementary_book_id, user_id, date, pickup_time)
+VALUES 
+(401, 401, 41, 2024-01-12, 10),
+(402, 402, 43, 2024-01-16, 8),
+(403, 403, 45, 2024-02-11, 12),
+(404, 404, 41, 2024-02-25, 11),
+(405, 409, 42, 2024-02-30, 10),
+(406, 411, 44, 2024-03-04, 13),
+(407, 413, 47, 2024-03-17, 14);
+SET IDENTITY_INSERT  Orders OFF
