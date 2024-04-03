@@ -52,16 +52,16 @@ SET IDENTITY_INSERT  Books ON
 SET IDENTITY_INSERT  Users ON
 INSERT INTO Users(user_id, name, email, phone_number, status_id, indeks)
 VALUES 
-(41, 'Adam Miodek', 'adam.miodek@pw.edu.pl', '567845346', 43, 123345),
-(42, 'Małgorzata Kowalska', 'malgorzata.kowalska@pw.edu.pl', '783458809', 43, 546898),
-(43, 'Paweł Lipski', 'pawel.lipski@pw.edu.pl', '733456210', 43, 567342),
-(44, 'Anna Mrozek', 'anna.mrozek@pw.edu.pl', '709947662', 43, 578009),
-(45, 'Katarzyna Góralska', 'katarzyna.goralska@pw.edu.pl', '598099332', 43, 345098),
-(46, 'Mateusz Orłowski', 'mateusz.orlowski@pw.edu.pl', '809356761', 43, 389066),
-(47, 'Oliwia Sosnowska', 'oliwia.sosnowska@pw.edu.pl', '789212343', 43, 356778),
-(48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 44, 333526),
-(49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 43, 387990),
-(50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 43, 234112);
+(41, 'Adam Miodek', 'adam.miodek@pw.edu.pl', '567845346', 7, 123345),
+(42, 'Małgorzata Kowalska', 'malgorzata.kowalska@pw.edu.pl', '783458809', 7, 546898),
+(43, 'Paweł Lipski', 'pawel.lipski@pw.edu.pl', '733456210', 7, 567342),
+(44, 'Anna Mrozek', 'anna.mrozek@pw.edu.pl', '709947662', 7, 578009),
+(45, 'Katarzyna Góralska', 'katarzyna.goralska@pw.edu.pl', '598099332', 7, 345098),
+(46, 'Mateusz Orłowski', 'mateusz.orlowski@pw.edu.pl', '809356761', 7, 389066),
+(47, 'Oliwia Sosnowska', 'oliwia.sosnowska@pw.edu.pl', '789212343', 7, 356778),
+(48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 8, 333526),
+(49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 8, 387990),
+(50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 9, 234112);
 SET IDENTITY_INSERT  Users ON
 
 SET IDENTITY_INSERT  Locations ON
@@ -83,12 +83,17 @@ VALUES
 SET IDENTITY_INSERT  Libraries OFF
 
 SET IDENTITY_INSERT  Status ON
-INSERT INTO Status(status_id, kind_of_status)
+INSERT INTO Status (status_id, kind_of_status)  --Status napisany przez Wojciecha Ignaczaka
 VALUES 
-(41, 'Wypozyczona'),
-(42, 'Niewypozyczona'),
-(43, 'Aktywny'),
-(44, 'Nieaktywny'),
-(45, 'W trakcie zamówienia'),
-(46, 'Dostarczono');
+(1,'zatrudniony'),
+(2,'zwolniony'),
+(3,'zamówione'),
+(4,'dostarczone'),
+(5,'wypozyczona'),
+(6,'dostepna'),
+(7,'student'),
+(8,'pracownik'),
+(9,'inny'),
+(10,'opłacone'),
+(11,'nieopłacone');
 SET IDENTITY_INSERT  Status OFF
