@@ -60,3 +60,21 @@ VALUES
 (48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 1, 333526),
 (49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 1, 387990),
 (50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 1, 234112);
+
+SET IDENTITY_INSERT  Locations ON
+INSERT INTO Locations(location_id, city, street, number, post_code)
+VALUES 
+(41, 'Płock', 'Ul. Łukasiewicza', 17, '09-400'),
+(42, 'Płock', 'Ul. Jachowicza', 2, '09-400'),
+(43, 'Warszawa', 'Pl. Politechniki', 1, '00-661');
+SET IDENTITY_INSERT  Locations OFF
+
+SET IDENTITY_INSERT  Libraries ON
+INSERT INTO Libraries(library_id, name, location_id)
+VALUES 
+(41, 'Biblioteka Główna Politechniki Warszawskiej Filii w Płocku', 41),
+(42, 'Biblioteka Dział Mechaniki i Informatyki Politechniki Warszawskiej Filii w Płocku', 42),
+(43, 'Biblioteka Główna Politechniki Warszawskiej w Warszawie', 43),
+(44, 'Biblioteka Cyfrowa Politechniki Warszawskiej Filii w Płocku', 41),
+(45, 'Biblioteka Cyfrowa Politechniki Warszawskiej w Warszawie', 43);
+SET IDENTITY_INSERT  Libraries OFF
