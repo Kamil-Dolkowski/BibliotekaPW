@@ -81,3 +81,14 @@ VALUES
 (44, 'Biblioteka Cyfrowa Politechniki Warszawskiej Filii w Płocku', 41),
 (45, 'Biblioteka Cyfrowa Politechniki Warszawskiej w Warszawie', 43);
 SET IDENTITY_INSERT  Libraries OFF
+
+SET IDENTITY_INSERT  Status ON
+INSERT INTO Status(status_id, kind_of_status)
+VALUES 
+(41, 'Wypozyczona'),
+(42, 'Niewypozyczona'),
+(43, 'Aktywny'),
+(44, 'Nieaktywny'),
+(45, 'W trakcie zamówienia'),
+(46, 'Dostarczono');
+SET IDENTITY_INSERT  Status OFF
