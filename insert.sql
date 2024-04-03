@@ -141,3 +141,14 @@ VALUES
 (47, 413, 47, 2024-03-18, 14);
 SET IDENTITY_INSERT  Orders OFF
 
+SET IDENTITY_INSERT Rents ON
+INSERT INTO Rents(rent_id, user_id, elementary_book_id, rent_date, return_date, order_id, extension_id, employee_id)
+VALUES 
+(41, 41, 401, 2024-01-12, 2024-01-29, 41, NULL, 41),
+(42, 43, 402, 2024-01-16, 2024-01-30, 42, NULL, 42),
+(43, 45, 403, 2024-02-08, 2024-02-22, 43, NULL, 41),
+(44, 41, 404, 2024-02-20, 2024-03-01, 44, NULL, 41),
+(45, 42, 409, 2024-02-29, 2024-03-14, 45, NULL, 43),
+(46, 44, 411, 2024-03-04, 2024-03-11, 46, NULL, 41),
+(47, 47, 413, 2024-03-18, 2024-03-28, 47, NULL, 42);
+SET IDENTITY_INSERT Rents OFF
