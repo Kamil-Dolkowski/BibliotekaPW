@@ -97,3 +97,23 @@ VALUES
 (10,'opłacone'),
 (11,'nieopłacone');
 SET IDENTITY_INSERT  Status OFF
+
+SET IDENTITY_INSERT  Elementary_books ON
+INSERT INTO Elementary_books(elementary_book_id, book_id, library_id, status_id, wear)
+VALUES 
+(401, 41, 41, 5, 100),
+(402, 42, 42, 5, 70),
+(403, 42, 41, 5, 80),
+(404, 43, 41, 5, 50),
+(405, 44, 44, 6, 60),
+(406, 45, 44, 6, 90),
+(407, 45, 41, 6, 80),
+(408, 46, 44, 6, 60),
+(409, 47, 43, 5, 100),
+(410, 48, 41, 6, 90),
+(411, 48, 41, 5, 90),
+(412, 49, 41, 6, 90),
+(413, 49, 42, 5, 80),
+(414, 49, 43, 6, 90),
+(415, 50, 41, 6, 70);
+SET IDENTITY_INSERT  Elementary_books OFF
