@@ -57,8 +57,8 @@ VALUES
 (43, 'Paweł Lipski', 'pawel.lipski@pw.edu.pl', '733456210', 7, 567342),
 (44, 'Anna Mrozek', 'anna.mrozek@pw.edu.pl', '709947662', 7, 578009),
 (45, 'Katarzyna Góralska', 'katarzyna.goralska@pw.edu.pl', '598099332', 7, 345098),
-(46, 'Mateusz Orłowski', 'mateusz.orlowski@pw.edu.pl', '809356761', 7, 389066),
-(47, 'Oliwia Sosnowska', 'oliwia.sosnowska@pw.edu.pl', '789212343', 7, 356778),
+(46, 'Mateusz Orłowski', 'mateusz.orlowski@pw.edu.pl', '809356761', 8, 389066),
+(47, 'Oliwia Sosnowska', 'oliwia.sosnowska@pw.edu.pl', '789212343', 8, 356778),
 (48, 'Klaudia Dworska', 'klaudia.dworska@pw.edu.pl', '799453567', 8, 333526),
 (49, 'Kamil Wiśniewski', 'kamil.wisniewski@pw.edu.pl', '675678879', 8, 387990),
 (50, 'Adam Wierzbicki', 'adam.wierzbicki@pw.edu.pl', '590707443', 9, 234112);
@@ -117,3 +117,13 @@ VALUES
 (414, 49, 43, 6, 90),
 (415, 50, 41, 6, 70);
 SET IDENTITY_INSERT  Elementary_books OFF
+
+SET IDENTITY_INSERT  Employees ON
+INSERT INTO Employees(employee_id, name, surename, phone_number, salary, working_hours_per_day, status_id, login, password, library_id)
+VALUES 
+(41, 'Mateusz', 'Orłowski', '809356761', 3800, 8, 1, '389066', 'MyP455w0rD', 41),
+(42, 'Oliwia', 'Sosnowska', '789212343', 3500, 8, 1, '356778', 'P455w0rDNo1', 42),
+(43, 'Klaudia', 'Dworska', '799453567', 3400, 7, 1, '333526', 'M0j3H45L0', 43),
+(44, 'Kamil', 'Wiśniewski', '675678879', 3600, 8, 1, '387990', 'Bi8li0t3k@', 44),
+(45, 'Karol', 'Gawron', '556342132', 3400, 8, 2, '889990', 'Lubi3-Ksi@zkiI', 41);
+SET IDENTITY_INSERT  Employees OFF
